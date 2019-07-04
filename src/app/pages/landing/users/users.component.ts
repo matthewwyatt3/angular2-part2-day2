@@ -14,12 +14,12 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.usersService.selectedUser.subscribe( user => {
       this.selectedUser = user;
+      this.randomBackground();
     });
   }
 
   onSelectUser(user) {
     this.usersService.onSelectUser(user);
-    this.randomBackground();
   }
 
   public randomBackground() {

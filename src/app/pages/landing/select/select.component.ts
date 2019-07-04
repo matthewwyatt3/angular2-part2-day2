@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
+import {UsersService} from '../../../services/users.service';
 
 @Component({
   selector: 'gw-select',
@@ -7,18 +7,15 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements OnInit {
+  public bgColor = 'yellow';
   public selectedUser = null;
-  public users = [
-    {name: 'Larry'},
-    {name: 'Moe'},
-    {name: 'Curly'},
-    {name: 'Shemp'},
-  ];
-
-  public bgColor ='red';
   constructor(public usersService: UsersService) { }
 
   ngOnInit() {
+    this.usersService.selectedUser.subscribe( user => {
+      this.selectedUser = user;
+      this.randomBackground();
+    });
   }
 
   onSelectUser(user) {
@@ -29,5 +26,4 @@ export class SelectComponent implements OnInit {
     const colors = ['red', 'blue', 'white', 'green', 'yellow', 'purple', 'orange'];
     this.bgColor = colors[Math.floor(Math.random() * colors.length)];
   }
-
 }

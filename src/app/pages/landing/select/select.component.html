@@ -1,9 +1,9 @@
 <p>select works!</p>
 
 <div [ngStyle]="{background: bgColor}">
-  {{ usersService.selectedUser | json }}
+  {{ selectedUser | json }}
   <div
-    [ngClass]="{'selected-user': user === usersService.selectedUser}"
+    [ngClass]="{'selected-user': user === selectedUser}"
 
     *ngFor="let user of usersService.users"
     (click)="onSelectUser(user)">
